@@ -1,0 +1,1104 @@
+#:kivy 1.7.1
+
+#: set GREEN [0.62, 0.83, 0.40, 1]
+#: set BLUE [0.231, 0.686, 0.855, 1]
+#: set DARK_BLUE [0.2627, 0.290, 0.3294, 1]
+#: set GREY_BLUE [0.6667, 0.698, 0.741176, 1]
+#: set ULTRA_LIGHT_GREY [0.93, 0.93, 0.93, 1]
+#: set LIGHT_GREY [0.86, 0.86, 0.86, 1]
+#: set DARK_GREY [0.26, 0.29, 0.33, 1]
+#: set NAVY_BLUE [0,0.349,0.953,1]
+#: set BLACK [0,0,0,0]
+#: set WHITE [255,255,255,255]
+#: set TRANSPARENT [1, 1, 1, 0]
+
+<AppScreen>:
+	canvas.before:
+	    Color:
+	        rgb: 1,1,1
+	    Rectangle:
+            size: 1500, 800
+
+BoxLayout:
+	ScreenManager:
+		FirstForm:
+			id: firstform
+			BoxLayout:	
+				canvas.before:
+					Color:
+						rgb: 1,1,1
+					Rectangle:
+						size: 1500, 800
+				orientation: "vertical"
+				button_font_size: "30sp"
+				#padding: root.width * 0.001, root.height * 0.001
+				padding: 0,0
+				spacing: 0
+				# associate to python connection
+				saywhat_text: saywhat_text
+				BoxLayout:
+					size_hint: 1, None
+					size_hint_y: .2
+					#height: biomod.height
+					padding: 0,0
+					Image:
+						id: biomod
+						source: 'images/biomod.png'
+						pos: self.pos
+						size: self.size
+					GridLayout:
+						cols: 2
+						padding:0,0
+						spacing: 0
+						Label:
+							text: 'START'
+							font_name: './fonts/Lato-Regular.ttf'
+							font_size: 11
+							color: DARK_GREY
+							width: 1
+						BoxLayout:
+							orientation: 'vertical'
+							Label:
+								color: DARK_GREY
+								text: ''
+								id: lb_time
+								font_size: 25
+								font_name: './fonts/Lato-Black.ttf'
+								valign: 'bottom'
+							Label:
+								id: lb_date
+								text: ''
+								color: DARK_GREY
+								#size_hint: 0.5, 2
+								valign: 'top'
+
+					GridLayout:
+						cols: 2
+						padding:0,0
+						spacing: 0
+						Label:
+							text: 'NOW'
+							font_name: './fonts/Lato-Regular.ttf'
+							font_size: 11
+							color: DARK_GREY
+							width: 1
+						BoxLayout:
+							orientation: 'vertical'
+							Label:
+								color: DARK_GREY
+								text: '13:04:35'
+								font_size: 25
+								font_name: './fonts/Lato-Black.ttf'
+								valign: 'bottom'
+							Label:
+								text: 'Mon 29 Mar 17'
+								color: DARK_GREY
+								#size_hint: 0.5, 2
+								valign: 'top'
+					GridLayout:
+						cols: 2
+						padding:0,0
+						spacing: 0
+						Label:
+							text: 'START'
+							font_name: './fonts/Lato-Regular.ttf'
+							font_size: 11
+							color: DARK_GREY
+							width: 1
+						BoxLayout:
+							orientation: 'vertical'
+							Label:
+								color: DARK_GREY
+								text: '13:34:05'
+								font_size: 25
+								font_name: './fonts/Lato-Black.ttf'
+								valign: 'bottom'
+							Label:
+								text: 'Mon 29 Mar 17'
+								color: DARK_GREY
+								#size_hint: 0.5, 2
+								valign: 'top'
+					Label:
+						text: " "
+					
+					Button:
+						id: gear
+						background_normal: 'images/gear.png'
+						on_press: firstform.pop_up()
+						border: 0,0,0,0
+						size_hint: .4,.7
+						valign: 'top'
+				Widget:
+					id: separator
+					size_hint_y: None
+					height: 6
+					canvas:
+						Color:
+							rgb: DARK_GREY
+						Rectangle:
+							pos: 0, separator.center_y
+							size: separator.width, 0.5
+				Button:
+					id: saywhat_text
+					text: "Reserved for graph"
+					font_size: "18sp"
+					color: DARK_GREY
+					background_color: WHITE
+					on_press: firstform.pop_up()
+				
+				Widget:
+					id: separator
+					spacing: 10
+					size_hint_y: None
+					height: 6
+					canvas:
+						Color:
+							rgb: DARK_GREY
+						Rectangle:
+							pos: 0, separator.center_y
+							size: separator.width, 0.5
+				GridLayout:
+					padding: 0,2
+					color: NAVY_BLUE
+					cols: 4
+					canvas.before:
+						Color:
+							rgb: WHITE
+						Rectangle:
+							size: self.size
+							pos: self.pos
+					BoxLayout:
+						orientation: 'horizontal'
+						padding: 0,0
+						border: DARK_GREY
+						BoxLayout:
+							orientation: 'vertical'
+							Label:
+								text: 'pH'
+								color: DARK_GREY
+								font_size: 16
+								size_hint: .2,.5
+								italic: True
+								bold: True
+								background_color: DARK_BLUE
+											
+							Button:
+								size_hint: 1, 5
+								font_size: 25
+								bold: True
+								color: DARK_GREY
+								background_color: TRANSPARENT
+								text: '     7.2'
+								on_press: firstform.pop_up()
+										
+							BoxLayout:
+								size_hint: .8,1
+								padding: 1,1
+								spacing: 2
+								Button:
+									background_normal: 'images/pid.png'
+									border: 0,0,0,0
+									size: self.size
+									on_press: firstform.pop_up()
+								Button:
+									background_normal: 'images/high.png'
+									border: 0,0,0,0
+									size: self.size
+									on_press: firstform.pop_up()
+								Button:
+									background_normal: 'images/low.png'
+									border: 0,0,0,0
+									size: self.size
+									on_press: firstform.pop_up()
+								Button:
+									background_normal: 'images/up.png'
+									border: 0,0,0,0
+									size: self.size
+									on_press: firstform.pop_up()
+								Button:
+									background_normal: 'images/down.png'
+									border: 0,0,0,0
+									size: self.size
+									on_press: firstform.pop_up()
+											
+						BoxLayout:
+							size_hint: .19,1.4
+							orientation: 'vertical'
+							Label:
+								text: '7.0'
+								color: DARK_GREY
+								size_hint: .4,.2
+								bold: True
+										
+							BoxLayout:
+								size_hint: 1,0.1
+								orientation: 'vertical'
+								padding: 1,1
+								spacing: 2
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: 8
+									padding: 1,1
+									Label:
+										text: '1.0'
+										font_size: 12
+										bold: True
+										color: DARK_GREY
+									Button:
+										background_normal: 'images/kp.png'
+										border: 0,0,0,0
+										size: self.size
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: 8
+									padding: 1,1
+									Label:
+										text: '1.0'
+										font_size: 12
+										bold: True
+										color: DARK_GREY
+									Button:
+										background_normal: 'images/kl.png'
+										border: 0,0,0,0
+										size: self.size
+								BoxLayout:
+									orientation: 'horizontal'
+									spacing: 8
+									padding: 1,1
+									Label:
+										text: '1.0'
+										font_size: 12
+										bold: True
+										color: DARK_GREY
+									Button:
+										background_normal: 'images/kd.png'
+										border: 0,0,0,0
+										size: self.size
+#2
+					GridLayout:
+						padding: 0,2
+						color: NAVY_BLUE
+						cols: 4
+						canvas.before:
+							Color:
+								rgb: WHITE
+							Rectangle:
+								size: self.size
+								pos: self.pos
+						BoxLayout:
+							orientation: 'horizontal'
+							padding: 0,0
+							border: DARK_GREY
+							BoxLayout:
+								orientation: 'vertical'
+								Label:
+									text: 'Temperature'
+									color: DARK_GREY
+									font_size: 16
+									size_hint: 0,.5
+									italic: True
+									bold: True
+									background_color: DARK_BLUE
+												
+								Button:
+									size_hint: 1, 5
+									font_size: 25
+									bold: True
+									color: DARK_GREY
+									background_color: TRANSPARENT
+									text: '     21.3'
+									on_press: firstform.pop_up()
+											
+								BoxLayout:
+									size_hint: .8,1
+									padding: 1,1
+									spacing: 2
+									Button:
+										background_normal: 'images/pid.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/high.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/low.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/up.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/down.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+												
+							BoxLayout:
+								size_hint: .19,1.4
+								orientation: 'vertical'
+								Label:
+									text: '7.0'
+									color: DARK_GREY
+									size_hint: .4,.2
+									bold: True
+											
+								BoxLayout:
+									size_hint: 1,0.1
+									orientation: 'vertical'
+									padding: 1,1
+									spacing: 2
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kp.png'
+											border: 0,0,0,0
+											size: self.size
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kl.png'
+											border: 0,0,0,0
+											size: self.size
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kd.png'
+											border: 0,0,0,0
+											size: self.size
+#3
+					GridLayout:
+						padding: 0,2
+						color: NAVY_BLUE
+						cols: 4
+						canvas.before:
+							Color:
+								rgb: WHITE
+							Rectangle:
+								size: self.size
+								pos: self.pos
+						BoxLayout:
+							orientation: 'horizontal'
+							padding: 0,0
+							border: DARK_GREY
+							BoxLayout:
+								orientation: 'vertical'
+								Label:
+									text: 'pH'
+									color: DARK_GREY
+									font_size: 16
+									size_hint: .2,.5
+									italic: True
+									bold: True
+									background_color: DARK_BLUE
+												
+								Button:
+									size_hint: 1, 5
+									font_size: 25
+									bold: True
+									color: DARK_GREY
+									background_color: TRANSPARENT
+									text: '     7.2'
+									on_press: firstform.pop_up()
+											
+								BoxLayout:
+									size_hint: .8,1
+									padding: 1,1
+									spacing: 2
+									Button:
+										background_normal: 'images/pid.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/high.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/low.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/up.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/down.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+												
+							BoxLayout:
+								size_hint: .19,1.4
+								orientation: 'vertical'
+								Label:
+									text: '7.0'
+									color: DARK_GREY
+									size_hint: .4,.2
+									bold: True
+											
+								BoxLayout:
+									size_hint: 1,0.1
+									orientation: 'vertical'
+									padding: 1,1
+									spacing: 2
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kp.png'
+											border: 0,0,0,0
+											size: self.size
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kl.png'
+											border: 0,0,0,0
+											size: self.size
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kd.png'
+											border: 0,0,0,0
+											size: self.size
+						
+#4
+					GridLayout:
+						padding: 0,2
+						color: NAVY_BLUE
+						cols: 4
+						canvas.before:
+							Color:
+								rgb: WHITE
+							Rectangle:
+								size: self.size
+								pos: self.pos
+						BoxLayout:
+							orientation: 'horizontal'
+							padding: 0,0
+							border: DARK_GREY
+							BoxLayout:
+								orientation: 'vertical'
+								Label:
+									text: 'pH'
+									color: DARK_GREY
+									font_size: 16
+									size_hint: .2,.5
+									italic: True
+									bold: True
+									background_color: DARK_BLUE
+												
+								Button:
+									size_hint: 1, 5
+									font_size: 25
+									bold: True
+									color: DARK_GREY
+									background_color: TRANSPARENT
+									text: '     7.2'
+									on_press: firstform.pop_up()
+											
+								BoxLayout:
+									size_hint: .8,1
+									padding: 1,1
+									spacing: 2
+									Button:
+										background_normal: 'images/pid.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/high.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/low.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/up.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/down.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+												
+							BoxLayout:
+								size_hint: .19,1.4
+								orientation: 'vertical'
+								Label:
+									text: '7.0'
+									color: DARK_GREY
+									size_hint: .4,.2
+									bold: True
+											
+								BoxLayout:
+									size_hint: 1,0.1
+									orientation: 'vertical'
+									padding: 1,1
+									spacing: 2
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kp.png'
+											border: 0,0,0,0
+											size: self.size
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kl.png'
+											border: 0,0,0,0
+											size: self.size
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kd.png'
+											border: 0,0,0,0
+											size: self.size
+				
+#5
+					GridLayout:
+						padding: 0,2
+						color: NAVY_BLUE
+						cols: 4
+						canvas.before:
+							Color:
+								rgb: WHITE
+							Rectangle:
+								size: self.size
+								pos: self.pos
+						BoxLayout:
+							orientation: 'horizontal'
+							padding: 0,0
+							border: DARK_GREY
+							BoxLayout:
+								orientation: 'vertical'
+								Label:
+									text: 'pH'
+									color: DARK_GREY
+									font_size: 16
+									size_hint: .2,.5
+									italic: True
+									bold: True
+									background_color: DARK_BLUE
+												
+								Button:
+									size_hint: 1, 5
+									font_size: 25
+									bold: True
+									color: DARK_GREY
+									background_color: TRANSPARENT
+									text: '     7.2'
+									on_press: firstform.pop_up()
+											
+								BoxLayout:
+									size_hint: .8,1
+									padding: 1,1
+									spacing: 2
+									Button:
+										background_normal: 'images/pid.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/high.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/low.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/up.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/down.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+												
+							BoxLayout:
+								size_hint: .19,1.4
+								orientation: 'vertical'
+								Label:
+									text: '7.0'
+									color: DARK_GREY
+									size_hint: .4,.2
+									bold: True
+											
+								BoxLayout:
+									size_hint: 1,0.1
+									orientation: 'vertical'
+									padding: 1,1
+									spacing: 2
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kp.png'
+											border: 0,0,0,0
+											size: self.size
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kl.png'
+											border: 0,0,0,0
+											size: self.size
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kd.png'
+											border: 0,0,0,0
+											size: self.size
+#6
+					GridLayout:
+						padding: 0,2
+						color: NAVY_BLUE
+						cols: 4
+						canvas.before:
+							Color:
+								rgb: WHITE
+							Rectangle:
+								size: self.size
+								pos: self.pos
+						BoxLayout:
+							orientation: 'horizontal'
+							padding: 0,0
+							border: DARK_GREY
+							BoxLayout:
+								orientation: 'vertical'
+								Label:
+									text: 'pH'
+									color: DARK_GREY
+									font_size: 16
+									size_hint: .2,.5
+									italic: True
+									bold: True
+									background_color: DARK_BLUE
+												
+								Button:
+									size_hint: 1, 5
+									font_size: 25
+									bold: True
+									color: DARK_GREY
+									background_color: TRANSPARENT
+									text: '     7.2'
+									on_press: firstform.pop_up()
+											
+								BoxLayout:
+									size_hint: .8,1
+									padding: 1,1
+									spacing: 2
+									Button:
+										background_normal: 'images/pid.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/high.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/low.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/up.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/down.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+												
+							BoxLayout:
+								size_hint: .19,1.4
+								orientation: 'vertical'
+								Label:
+									text: '7.0'
+									color: DARK_GREY
+									size_hint: .4,.2
+									bold: True
+											
+								BoxLayout:
+									size_hint: 1,0.1
+									orientation: 'vertical'
+									padding: 1,1
+									spacing: 2
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kp.png'
+											border: 0,0,0,0
+											size: self.size
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kl.png'
+											border: 0,0,0,0
+											size: self.size
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kd.png'
+											border: 0,0,0,0
+											size: self.size
+#7
+					GridLayout:
+						padding: 0,2
+						color: NAVY_BLUE
+						cols: 4
+						canvas.before:
+							Color:
+								rgb: WHITE
+							Rectangle:
+								size: self.size
+								pos: self.pos
+						BoxLayout:
+							orientation: 'horizontal'
+							padding: 0,0
+							border: DARK_GREY
+							BoxLayout:
+								orientation: 'vertical'
+								Label:
+									text: 'pH'
+									color: DARK_GREY
+									font_size: 16
+									size_hint: .2,.5
+									italic: True
+									bold: True
+									background_color: DARK_BLUE
+												
+								Button:
+									size_hint: 1, 5
+									font_size: 25
+									bold: True
+									color: DARK_GREY
+									background_color: TRANSPARENT
+									text: '     7.2'
+									on_press: firstform.pop_up()
+											
+								BoxLayout:
+									size_hint: .8,1
+									padding: 1,1
+									spacing: 2
+									Button:
+										background_normal: 'images/pid.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/high.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/low.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/up.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/down.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+												
+							BoxLayout:
+								size_hint: .19,1.4
+								orientation: 'vertical'
+								Label:
+									text: '7.0'
+									color: DARK_GREY
+									size_hint: .4,.2
+									bold: True
+											
+								BoxLayout:
+									size_hint: 1,0.1
+									orientation: 'vertical'
+									padding: 1,1
+									spacing: 2
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kp.png'
+											border: 0,0,0,0
+											size: self.size
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kl.png'
+											border: 0,0,0,0
+											size: self.size
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kd.png'
+											border: 0,0,0,0
+											size: self.size
+#8
+					GridLayout:
+						padding: 0,2
+						color: NAVY_BLUE
+						cols: 4
+						canvas.before:
+							Color:
+								rgb: WHITE
+							Rectangle:
+								size: self.size
+								pos: self.pos
+						BoxLayout:
+							orientation: 'horizontal'
+							padding: 0,0
+							border: DARK_GREY
+							BoxLayout:
+								orientation: 'vertical'
+								Label:
+									text: 'pH'
+									color: DARK_GREY
+									font_size: 16
+									size_hint: .2,.5
+									italic: True
+									bold: True
+									background_color: DARK_BLUE
+												
+								Button:
+									size_hint: 1, 5
+									font_size: 25
+									bold: True
+									color: DARK_GREY
+									background_color: TRANSPARENT
+									text: '     7.2'
+									on_press: firstform.pop_up()
+											
+								BoxLayout:
+									size_hint: .8,1
+									padding: 1,1
+									spacing: 2
+									Button:
+										background_normal: 'images/pid.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/high.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/low.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/up.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+									Button:
+										background_normal: 'images/down.png'
+										border: 0,0,0,0
+										size: self.size
+										on_press: firstform.pop_up()
+												
+							BoxLayout:
+								size_hint: .19,1.4
+								orientation: 'vertical'
+								Label:
+									text: '7.0'
+									color: DARK_GREY
+									size_hint: .4,.2
+									bold: True
+											
+								BoxLayout:
+									size_hint: 1,0.1
+									orientation: 'vertical'
+									padding: 1,1
+									spacing: 2
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kp.png'
+											border: 0,0,0,0
+											size: self.size
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kl.png'
+											border: 0,0,0,0
+											size: self.size
+									BoxLayout:
+										orientation: 'horizontal'
+										spacing: 8
+										padding: 1,1
+										Label:
+											text: '1.0'
+											font_size: 12
+											bold: True
+											color: DARK_GREY
+										Button:
+											background_normal: 'images/kd.png'
+											border: 0,0,0,0
+											size: self.size
